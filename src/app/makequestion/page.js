@@ -1,5 +1,6 @@
 "use client"
 import Layout from "@/components/Layout"
+import axios from "axios"
 import { useState } from "react"
 
 
@@ -12,12 +13,28 @@ const Page = () => {
     const [answer4, setAnswer4] = useState('')
 
     const submitForm = (event) => {
-        console.log(questionTitle)
-        console.log(answer1)
-        console.log(answer2)
-        console.log(answer3)
-        console.log(answer4)
+
         console.log("Submitted!")
+
+        //API POST
+        const questionObject = {
+                title: questionTitle,
+                answers: [
+                  { answer: answer1, answerId: 1 },
+                  { answer: answer2, answerId: 2 },
+                  { answer: answer3, answerId: 3 },
+                  { answer: answer4, correct: true, answerId: 4 },
+                ],
+              }
+       console.log(JSON.stringify(questionObject))
+       //Får ikke til async await av en eller annen grunn.
+        axios.post('/api/quizzes', JSON.stringify(questionObject))
+              .then((response) => {
+                console.log(response)
+              })
+              .catch((error) => {
+                console.log(error)
+              })
         event.preventDefault()
     }
 
@@ -41,19 +58,19 @@ const Page = () => {
         <Layout>
         <div className="MakeQuestion">
             <form onSubmit={submitForm}>
-                <label for="question title">Spørsmål:</label>
+                <label htmlFor="question title">Spørsmål:</label>
                 <input name="question title" type="text" onChange={questionTitleInputChange} />
 
-                <label for="question title">Feil svaralternativ 1:</label>
+                <label htmlFor="question title">Feil svaralternativ 1:</label>
                 <input name="question title" type="text" onChange={answer1InputChange} />
 
-                <label for="question title">Feil svaralternativ 2:</label>
+                <label htmlFor="question title">Feil svaralternativ 2:</label>
                 <input name="question title" type="text" onChange={answer2InputChange} />
 
-                <label for="question title">Feil svaralternativ 3:</label>
+                <label htmlFor="question title">Feil svaralternativ 3:</label>
                 <input name="question title" type="text" onChange={answer3InputChange} />
 
-                <label for="question title">Riktig svaralternativ:</label>
+                <label htmlFor="question title">Riktig svaralternativ:</label>
                 <input name="question title" type="text" onChange={answer4InputChange} />
 
 
