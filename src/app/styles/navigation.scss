@@ -1,0 +1,13 @@
+.Navigation {
+    ul {
+        display: flex;
+        flex-direction: row;
+
+        list-style-type: none;
+
+        li {
+            margin: 0.5em;
+            font-size: large;
+        }
+    }
+}

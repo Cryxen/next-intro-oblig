@@ -5,7 +5,6 @@ import styles from './page.module.css'
 export default function Home({ Component, pageProps }) {
   return (
     <Layout>
-      <Navigation />
     </Layout>
   )
 }
