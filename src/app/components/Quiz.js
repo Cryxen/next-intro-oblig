@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Quiz = () => {
+const Quiz = ({setPoints}) => {
 
     const [radioBtSelected, setRadioBtSelected] = useState({})
     const [quizzes, setQuizzes] = useState([{}])
@@ -27,8 +27,7 @@ const Quiz = () => {
         console.log(radioBtSelected.correct)
         if(radioBtSelected.correct)
         {
-            alert("Hel riktig!!")
-            console.log("Helt riktig!")
+            setPoints((prev) => prev+1)
         }
     }
 
