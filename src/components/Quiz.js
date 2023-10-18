@@ -1,22 +1,12 @@
 import { useEffect, useState } from "react";
 
-const Quiz = ({setPoints}) => {
+const Quiz = ({setPoints, points, quizzes}) => {
 
     const [radioBtSelected, setRadioBtSelected] = useState({})
-    const [quizzes, setQuizzes] = useState([{}])
 
-    useEffect(() => {
-        const getQuizzes = async () => {
-            const response = await fetch('/api/quizzes', {
-                method:"get"
-            })
-            const result = (await response.json())
-            console.log(result)
-            setQuizzes(result.data)
-        }
-        getQuizzes()
-    }, [])
 
+
+    let counter = 0
 
     const handleRadioBtChange = (event) => {
         setRadioBtSelected(JSON.parse(event.target.value))
@@ -34,11 +24,9 @@ const Quiz = ({setPoints}) => {
     return (
         <div>
           <h1>Quiz!</h1>
-          {quizzes?.map((quiz) => {
-            return (
-              <article key={quiz.id}>
-                <p>{quiz.title}</p>
-                {quiz?.answers?.map((answer) => 
+              <article>
+                <p>{quizzes?.title}</p>
+                {quizzes?.answers?.map((answer) => 
                 {
                     return (
                     <div key={answer.answerId}>
@@ -48,8 +36,6 @@ const Quiz = ({setPoints}) => {
                 )}
                 )}
               </article>
-            );
-          })}
           <button onClick={checkQuizAnswer}>Check answer!</button>
         </div>
       );  

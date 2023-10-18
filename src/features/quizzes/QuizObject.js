@@ -1,9 +1,4 @@
-import { DrawQuestion } from "@/features/quizzes/DrawQuestion";
-import { NextResponse } from "next/server";
-
-export const GET = () => {
-    const quizObject = [
-        {
+export const QuizObject = [{
           id: 1,
           title: "quiz 1",
           answers: [
@@ -44,9 +39,3 @@ export const GET = () => {
           ],
         },
       ];
-
-      return NextResponse.json(
-        {data: DrawQuestion()},
-        {status: 200}
-      )
-}
