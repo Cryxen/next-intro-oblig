@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const Quiz = ({setPoints, points, quizzes}) => {
+const Quiz = ({setPoints, quizzes}) => {
 
     const [radioBtSelected, setRadioBtSelected] = useState({})
 
 
 
-    let counter = 0
 
     const handleRadioBtChange = (event) => {
         setRadioBtSelected(JSON.parse(event.target.value))

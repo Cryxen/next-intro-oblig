@@ -23,7 +23,7 @@ const QuizPage = ({ Component, pageProps }) => {
   return(
     <Layout>
       <Counter points = {points}/>
-      <Quiz setPoints = {setPoints} points = {points} quizzes = {quizzes} setQuizzes={setQuizzes}/>
+      <Quiz setPoints = {setPoints} quizzes = {quizzes} setQuizzes={setQuizzes}/>
     </Layout>
   )
 
