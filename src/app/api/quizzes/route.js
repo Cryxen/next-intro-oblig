@@ -1,4 +1,5 @@
 import { DrawQuestion } from "@/features/quizzes/DrawQuestion";
+import { QuizObject } from "@/features/quizzes/QuizObject";
 import { NextResponse } from "next/server";
 
 export const GET = () => {
@@ -13,5 +14,8 @@ export const POST = async (req) => {
 
    const data = await req.json()
    console.log(data)
+   console.log(QuizObject.push(data))
+   console.log("All Quiz objects: ")
+   console.log(QuizObject)
   return NextResponse.json(data,{ status: 201 });
 };
